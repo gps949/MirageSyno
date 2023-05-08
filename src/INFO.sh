@@ -16,16 +16,16 @@ else
 fi
 
 cat <<EOF
-package="Tailscale"
+package="Mirage"
 version="${VERSION}"
 arch="${ARCH}"
 description="Connect all your devices using WireGuard, without the hassle."
-displayname="Tailscale"
-maintainer="Tailscale, Inc."
-maintainer_url="https://github.com/tailscale/tailscale-synology"
+displayname="Mirage"
+maintainer="Mirage Team"
+maintainer_url="https://github.com/gps949/MirageSyno"
 create_time="${TIMESTAMP}"
 dsmuidir="ui"
-dsmappname="SYNO.SDS.Tailscale"
+dsmappname="SYNO.SDS.Mirage"
 startstop_restart_services="nginx"
 os_min_ver="${os_min_ver}"
 os_max_ver="${os_max_ver}"

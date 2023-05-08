@@ -1,8 +1,8 @@
-// Copyright (c) 2021 Tailscale Inc & AUTHORS All rights reserved.
+// Copyright (c) 2021 Mirage Inc & AUTHORS All rights reserved.
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-// The tailscale-synology tool generates Tailscale Synology SPK packages.
+// The MirageSyno tool generates Mirage Synology SPK packages.
 package main
 
 import (
@@ -28,7 +28,7 @@ import (
 )
 
 // srcFS are all the misc files that need to be in the SPK package.
-// We embed them into the binary so the tailscale-synology tool can
+// We embed them into the binary so the MirageSyno tool can
 // be run anywhere. Plus they're small.
 //
 //go:embed src/*
@@ -39,13 +39,13 @@ var staticIsExecutable = map[string]bool{
 }
 
 var (
-	dsmVersion    = flag.String("dsm-version", "7", `DSM version(s) to build: 6, 7, or "all"`)
-	goarch        = flag.String("goarch", "amd64", `GOARCH to build package(s) for, or "all"`)
+	dsmVersion    = flag.String("dsm-version", "all", `DSM version(s) to build: 6, 7, or "all"`)
+	goarch        = flag.String("goarch", "all", `GOARCH to build package(s) for, or "all"`)
 	compress      = flag.String("compress", "speed", `compression option: "speed" or "size"; empty means automatic where local builds are fast but big`)
 	packageCenter = flag.Bool("for-package-center", false, `build for the package center`)
 
-	srcDir = flag.String("source", ".", "path to tailscale.com's go.mod directory root")
-	output = flag.String("o", "", "output directory or path; if a directory, files are written there. If it ends in *.spk, the spk is written to that name")
+	srcDir = flag.String("source", "MirageClient", "path to MirageClient's go.mod directory root")
+	output = flag.String("o", "spks", "output directory or path; if a directory, files are written there. If it ends in *.spk, the spk is written to that name")
 )
 
 // synPlat maps from GOARCH (or GOARCH/GOARM) to the Synology platform name(s).
@@ -131,12 +131,12 @@ func main() {
 type spkParams struct {
 	createTime       time.Time
 	spkBuildBase     int    // derived from the short version.
-	version          string // "1.18.1", Tailscale short version
+	version          string // "1.18.1", Mirage short version
 	goarch           string // "amd64"
 	forPackageCenter bool
 
 	// srcDir, if non-empty, means to use the "go" command to build
-	// the tailscale and tailscaled binaries in the srcDir directory
+	// the mirage and miraged binaries in the srcDir directory
 	// instead of downloading them from pkgs.tailscale.com.
 	srcDir string
 }
@@ -166,7 +166,7 @@ func (p spkParams) versionDashBuild(dsm int) string {
 
 // filename returns the SPK's base filename.
 func (p spkParams) filename(dsm int, synoArch string) string {
-	return fmt.Sprintf("tailscale-%v-%v-dsm%v.spk",
+	return fmt.Sprintf("mirage-%v-%v-dsm%v.spk",
 		synoArch,
 		p.versionDashBuild(dsm),
 		dsm)
@@ -214,7 +214,7 @@ func genSPK(param spkParams, dsm int, synoArch string, extractedSize int64, priv
 		file("INFO", getInfo(param, dsm, synoArch, extractedSize)),
 		file("PACKAGE_ICON.PNG", static("PACKAGE_ICON.PNG")),
 		file("PACKAGE_ICON_256.PNG", static("PACKAGE_ICON_256.PNG")),
-		file("Tailscale.sc", static("Tailscale.sc")),
+		file("Mirage.sc", static("Mirage.sc")),
 		dir("conf/", param.createTime),
 		file("conf/resource", static("resource")),
 		file("conf/privilege", static(privFile)),
@@ -270,10 +270,10 @@ func genInnerPackageTgz(w io.Writer, param spkParams, dsm int) (extractedSize in
 	}
 	err = writeTar(io.MultiWriter(writeByteCounter{&extractedSize}, wc),
 		dir("bin/", param.createTime),
-		file("bin/tailscaled", buildBin("tailscaled", param)),
-		file("bin/tailscale", buildBin("tailscale", param)),
+		file("bin/miraged", buildBin("miraged", param)),
+		file("bin/mirage", buildBin("mirage", param)),
 		dir("conf/", param.createTime),
-		file("conf/Tailscale.sc", static("Tailscale.sc")),
+		file("conf/Mirage.sc", static("Mirage.sc")),
 		file("conf/logrotate.conf", static("logrotate-dsm"+strconv.Itoa(dsm))),
 		dir("ui/", param.createTime),
 		file("ui/PACKAGE_ICON_256.PNG", static("PACKAGE_ICON_256.PNG")),
@@ -315,8 +315,8 @@ func dir(name string, modTime time.Time) tarEntry {
 			Name:     name,
 			Mode:     0755,
 			ModTime:  modTime.Truncate(time.Second),
-			Uname:    "tailscale",
-			Gname:    "tailscale",
+			Uname:    "mirage",
+			Gname:    "mirage",
 		})
 	}
 }
@@ -445,7 +445,7 @@ func compileGoBinary(dir, gopath string, env []string, ldflags, gotags string) (
 	return out, nil
 }
 
-// buildBin builds baseProg ("tailscale" or "tailscaled")
+// buildBin builds baseProg ("mirage" or "miraged")
 // and returns a fileOpener for it.
 func buildBin(baseProg string, param spkParams) fileOpener {
 	vars, err := getDistVars(param.srcDir)
@@ -543,16 +543,16 @@ func getInfo(param spkParams, dsm int, synoArch string, extractedSize int64) fil
 
 // genInfo returns the outer tar's INFO file, which looks like:
 /*
-package="Tailscale"
+package="Mirage"
 version="1.16.2-2013"
 arch="x86_64"
 description="Connect all your devices using WireGuard, without the hassle."
-displayname="Tailscale"
-maintainer="Tailscale, Inc."
-maintainer_url="https://github.com/tailscale/tailscale-synology"
+displayname="Mirage"
+maintainer="Mirage Team"
+maintainer_url="https://github.com/gps949/MirageSyno"
 create_time="20211103-21:01:18"
 dsmuidir="ui"
-dsmappname="SYNO.SDS.Tailscale"
+dsmappname="SYNO.SDS.Mirage"
 startstop_restart_services="nginx"
 os_min_ver="7.0-40000"
 os_max_ver=""
@@ -563,16 +563,16 @@ func genInfo(param spkParams, dsm int, synoArch string, extractedSize int64) ([]
 	add := func(k, v string) {
 		fmt.Fprintf(&buf, "%s=%q\n", k, v)
 	}
-	add("package", "Tailscale")
+	add("package", "Mirage")
 	add("version", param.versionDashBuild(dsm))
 	add("arch", synoArch)
 	add("description", "Connect all your devices using WireGuard, without the hassle.")
-	add("displayname", "Tailscale")
-	add("maintainer", "Tailscale, Inc.")
-	add("maintainer_url", "https://github.com/tailscale/tailscale-synology")
+	add("displayname", "Mirage")
+	add("maintainer", "Mirage Team")
+	add("maintainer_url", "https://github.com/gps949/MirageSyno")
 	add("create_time", param.createTime.Format("20060102-15:04:05"))
 	add("dsmuidir", "ui")
-	add("dsmappname", "SYNO.SDS.Tailscale")
+	add("dsmappname", "SYNO.SDS.Mirage")
 	add("startstop_restart_services", "nginx")
 	switch dsm {
 	case 6:

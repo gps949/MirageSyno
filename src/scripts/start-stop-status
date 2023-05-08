@@ -1,20 +1,20 @@
 #!/bin/bash
 
-SERVICE_NAME="tailscale"
+SERVICE_NAME="mirage"
 
 if [ "${SYNOPKG_DSM_VERSION_MAJOR}" -eq "6" ]; then
-    PKGVAR="/var/packages/Tailscale/etc"
+    PKGVAR="/var/packages/Mirage/etc"
 else
     PKGVAR="${SYNOPKG_PKGVAR}"
 fi
 
-PID_FILE="${PKGVAR}/tailscaled.pid"
-LOG_FILE="${PKGVAR}/tailscaled.stdout.log"
-STATE_FILE="${PKGVAR}/tailscaled.state"
-SOCKET_FILE="${PKGVAR}/tailscaled.sock"
-PORT="41641"
+PID_FILE="${PKGVAR}/miraged.pid"
+LOG_FILE="${PKGVAR}/miraged.stdout.log"
+STATE_FILE="${PKGVAR}/miraged.state"
+SOCKET_FILE="${PKGVAR}/miraged.sock"
+PORT="51651"
 
-SERVICE_COMMAND="${SYNOPKG_PKGDEST}/bin/tailscaled \
+SERVICE_COMMAND="${SYNOPKG_PKGDEST}/bin/miraged \
 --state=${STATE_FILE} \
 --socket=${SOCKET_FILE} \
 --port=$PORT"
@@ -25,14 +25,14 @@ if [ "${SYNOPKG_DSM_VERSION_MAJOR}" -eq "7" -a ! -e "/dev/net/tun" ]; then
 fi
 
 if [ "${SYNOPKG_DSM_VERSION_MAJOR}" -eq "6" ]; then
-    chown -R tailscale:tailscale "${PKGVAR}/"
+    chown -R mirage:mirage "${PKGVAR}/"
 fi
 
 start_daemon() {
     local ts=$(date --iso-8601=second)
     echo "${ts} Starting ${SERVICE_NAME} with: ${SERVICE_COMMAND}" >${LOG_FILE}
-    STATE_DIRECTORY=${PKGVAR} ${SERVICE_COMMAND} 2>&1 | sed -u '1,200p;201s,.*,[further tailscaled logs suppressed],p;d' >>${LOG_FILE} &
-    # We pipe tailscaled's output to sed, so "$!" retrieves the PID of sed not tailscaled.
+    STATE_DIRECTORY=${PKGVAR} ${SERVICE_COMMAND} 2>&1 | sed -u '1,200p;201s,.*,[further miraged logs suppressed],p;d' >>${LOG_FILE} &
+    # We pipe miraged's output to sed, so "$!" retrieves the PID of sed not miraged.
     # Use jobs -p to retrieve the PID of the most recent process group leader.
     jobs -p >"${PID_FILE}"
 }

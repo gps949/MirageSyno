@@ -1,0 +1,3 @@
+[submodule "MirageClient"]
+	path = MirageClient
+	url = https://github.com/MirageNetwork/MirageClient.git

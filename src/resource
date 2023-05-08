@@ -1,9 +1,9 @@
 {
 	"port-config": {
-		"protocol-file": "conf/Tailscale.sc"
+		"protocol-file": "conf/Mirage.sc"
 	},
 	"usr-local-linker": {
-		"bin": ["bin/tailscale"]
+		"bin": ["bin/mirage"]
 	},
 	"syslog-config": {
 		"logrotate-relpath": "conf/logrotate.conf"

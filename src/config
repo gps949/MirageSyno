@@ -1,12 +1,12 @@
 {
 	".url": {
-		"SYNO.SDS.Tailscale": {
+		"SYNO.SDS.Mirage": {
 			"type": "url",
 			"version": "1.8.3",
-			"title": "Tailscale",
+			"title": "Mirage",
 			"icon": "PACKAGE_ICON_256.PNG",
-			"url": "webman/3rdparty/Tailscale/",
-			"urlTarget": "_syno_tailscale"
+			"url": "webman/3rdparty/Mirage/",
+			"urlTarget": "_syno_mirage"
 		}
 	}
 }

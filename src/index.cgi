@@ -1,2 +1,2 @@
 #! /bin/sh
-exec /var/packages/Tailscale/target/bin/tailscale web -cgi
+exec /var/packages/Mirage/target/bin/mirage web -cgi

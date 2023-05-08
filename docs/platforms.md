@@ -1,10 +1,10 @@
 # Synology platform names and package architecture
 
-This document exist as a non-exhaustive list of Synology models and their mapping to tailscale package architecture to help users identify which package to use, until the Tailscale package is available officially in Synology's package repository.
+This document exist as a non-exhaustive list of Synology models and their mapping to mirage package architecture to help users identify which package to use, until the Mirage package is available officially in Synology's package repository.
 
 
 ### FS Series
-| Model  | CPU                        | Synology Platform Name | Tailscale Package Arch |
+| Model  | CPU                        | Synology Platform Name | Mirage Package Arch |
 | ------ | -------------------------- | ---------------------- | ---------------------- |
 | FS6400 | Intel Xeon Silver 4110 x 2 | purley                 | amd64                  |
 | FS3600 | Intel Xeon D-1567          | broadwellnk            | amd64                  |
@@ -14,14 +14,14 @@ This document exist as a non-exhaustive list of Synology models and their mappin
 | FS1018 | Intel Pentium D1508        | broadwellnk            | amd64                  |
 ---
 ### SA Series
-| Model   | CPU                   | Synology Platform Name | Tailscale Package Arch |
+| Model   | CPU                   | Synology Platform Name | Mirage Package Arch |
 | ------- | --------------------- | ---------------------- | ---------------------- |
 | SA3600  | Intel Xeon D-1567     | broadwellnk            | amd64                  |
 | SA3400  | Intel Xeon D-1541     | broadwellnk            | amd64                  |
 | SA3200D | Intel Xeon D-1521 x 2 |                        | amd64                  |
 ---
 ### x21 Series
-| Model                       | CPU               | Synology Platform Name | Tailscale Package Arch |
+| Model                       | CPU               | Synology Platform Name | Mirage Package Arch |
 | --------------------------- | ----------------- | ---------------------- | ---------------------- |
 | RS4021xs+, RS3621xs+        | Intel Xeon D-1541 | broadwellnk            | amd64                  |
 | RS3621RPxs                  | Intel Xeon D-1531 | broadwellnk            | amd64                  |
@@ -30,7 +30,7 @@ This document exist as a non-exhaustive list of Synology models and their mappin
 | DS1621+                     | AMD Ryzen V1500B  | v1000                  | amd64                  |
 ---
 ### x20 Series
-| Model                   | CPU                 | Synology Platform Name | Tailscale Package Arch |
+| Model                   | CPU                 | Synology Platform Name | Mirage Package Arch |
 | ----------------------- | ------------------- | ---------------------- | ---------------------- |
 | RS820+, RS820RP+        | Intel Atom C3538    | denverton              | amd64                  |
 | DS720+, DS920+, DS1520+ | Intel Celeron J4125 | geminilake             | amd64                  |
@@ -40,7 +40,7 @@ This document exist as a non-exhaustive list of Synology models and their mappin
 | DS120j                  | Marvell A3720       | armada37xx             | arm64                  |
 ---
 ### x19 Series
-| Model            | CPU                  | Synology Platform Name | Tailscale Package Arch |
+| Model            | CPU                  | Synology Platform Name | Mirage Package Arch |
 | ---------------- | -------------------- | ---------------------- | ---------------------- |
 | RS1219+          | Intel Atom C2538     | avoton                 | amd64                  |
 | RS1619xs+        | Intel Xeon D-1527    | broadwell              | amd64                  |
@@ -51,7 +51,7 @@ This document exist as a non-exhaustive list of Synology models and their mappin
 | DS419slim        | Marvell A385 88F6820 | armada38x              | arm                    |
 ---
 ### x18 Series
-| Model                                  | CPU                        | Synology Platform Name | Tailscale Package Arch |
+| Model                                  | CPU                        | Synology Platform Name | Mirage Package Arch |
 | -------------------------------------- | -------------------------- | ---------------------- | ---------------------- |
 | FS1018, DS3018xs                       | Intel Pentium D1508        | broadwellnk            | amd64                  |
 | RS3618xs                               | Intel Xeon D-1521          | broadwell              | amd64                  |
@@ -64,7 +64,7 @@ This document exist as a non-exhaustive list of Synology models and their mappin
 | DS218j                                 | Marvell Armada 385 88F6820 | armada38x              | arm                    |
 ---
 ### x17 Series
-| Model                 | CPU                          | Synology Platform Name | Tailscale Package Arch |
+| Model                 | CPU                          | Synology Platform Name | Mirage Package Arch |
 | --------------------- | ---------------------------- | ---------------------- | ---------------------- |
 | FS3017                | Intel Xeon E5-2620 v3 x 2    | grantley               | amd64                  |
 | FS2017, RS4017xs+     | Intel Xeon D-1541            | broadwell              | amd64                  |
@@ -77,7 +77,7 @@ This document exist as a non-exhaustive list of Synology models and their mappin
 | DS1517, DS1817        | Annapurna Labs Alpine AL-314 | alpine                 | arm                    |
 ---
 ### x16 Series
-| Model                                  | CPU                          | Synology Platform Name | Tailscale Package Arch |
+| Model                                  | CPU                          | Synology Platform Name | Mirage Package Arch |
 | -------------------------------------- | ---------------------------- | ---------------------- | ---------------------- |
 | RS18016xs+                             | Intel Xeon E3-1230 v2        | bromolow               | amd64                  |
 | RS2416+, RS2416RP+                     | Intel Atom C2538             | avoton                 | amd64                  |
@@ -93,7 +93,7 @@ This document exist as a non-exhaustive list of Synology models and their mappin
 | DS216play                              | STM STiH412                  | monaco                 | arm                    |
 ---
 ### x15 Series
-| Model                                               | CPU                          | Synology Platform Name | Tailscale Package Arch |
+| Model                                               | CPU                          | Synology Platform Name | Mirage Package Arch |
 | --------------------------------------------------- | ---------------------------- | ---------------------- | ---------------------- |
 | RC18015xs+                                          | Intel Xeon E3-1230 v2        | bromolow               | amd64                  |
 | DS3615xs                                            | Intel Core i3-4130           | bromolow               | amd64                  |
@@ -107,7 +107,7 @@ This document exist as a non-exhaustive list of Synology models and their mappin
 | DS115j                                              | Marvell Armada 370 88F6707   | armada370              | arm                    |
 ---
 ### x14 Series
-| Model                                   | CPU                        | Synology Platform Name | Tailscale Package Arch |
+| Model                                   | CPU                        | Synology Platform Name | Mirage Package Arch |
 | --------------------------------------- | -------------------------- | ---------------------- | ---------------------- |
 | RS3614xs+                               | Intel Xeon E3-1230 v2      | bromolow               | amd64                  |
 | RS3614xs, RS3614RPxs                    | Intel Core i3-4130         | bromolow               | amd64                  |
@@ -118,7 +118,7 @@ This document exist as a non-exhaustive list of Synology models and their mappin
 | DS214play                               | Intel Atom CE5335          | evansport              | 386                    |
 ---
 ### x13 Series
-| Model                             | CPU                        | Synology Platform Name | Tailscale Package Arch |
+| Model                             | CPU                        | Synology Platform Name | Mirage Package Arch |
 | --------------------------------- | -------------------------- | ---------------------- | ---------------------- |
 | RS3413xs+, RS10613xs+             | Intel Xeon E3-1230 v2      | bromolow               | amd64                  |
 | DS713+, DS1513+, DS1813+, DS2413+ | Intel Atom D2700           | cedarview              | amd64                  |
@@ -127,7 +127,7 @@ This document exist as a non-exhaustive list of Synology models and their mappin
 | DS213j                            | Marvell Armada 370 88F6707 | armada370              | arm                    |
 ---
 ### x12 Series
-| Model                                                          | CPU                      | Synology Platform Name | Tailscale Package Arch |
+| Model                                                          | CPU                      | Synology Platform Name | Mirage Package Arch |
 | -------------------------------------------------------------- | ------------------------ | ---------------------- | ---------------------- |
 | DS3612xs, RS3412xs, RS3412RPxs                                 | Intel Core i3-2100       | bromolow               | amd64                  |
 | DS412+, DS1512+, DS1812+, RS812+, RS812RP+, RS2212+, RS2212RP+ | Intel Atom D2700         | cedarview              | amd64                  |
@@ -137,7 +137,7 @@ This document exist as a non-exhaustive list of Synology models and their mappin
 | DS112j                                                         | Marvell Kirkwood 88F6702 | 88f6281                | arm                    |
 ---
 ### x11 Series
-| Model                                          | CPU                      | Synology Platform Name | Tailscale Package Arch |
+| Model                                          | CPU                      | Synology Platform Name | Mirage Package Arch |
 | ---------------------------------------------- | ------------------------ | ---------------------- | ---------------------- |
 | DS3611xs, RS3411xs, RS3411RPxs                 | Intel Core i3-2100       | bromolow               | amd64                  |
 | DS411+II, DS1511+, DS2411+, RS2211+, RS2211RP+ | Intel Atom D525          | x86                    | amd64                  |
@@ -146,7 +146,7 @@ This document exist as a non-exhaustive list of Synology models and their mappin
 | DS211j, DS411j                                 | Marvell Kirkwood 88F6281 | 88f6281                | arm                    |
 ---
 ### x10 Series
-| Model                     | CPU                      | Synology Platform Name | Tailscale Package Arch |
+| Model                     | CPU                      | Synology Platform Name | Mirage Package Arch |
 | ------------------------- | ------------------------ | ---------------------- | ---------------------- |
 | DS1010+, RS810+, RS810RP+ | Intel Atom D510          | x86                    | amd64                  |
 | DS710+                    | Intel Atom D410          | x86                    | amd64                  |
@@ -154,14 +154,14 @@ This document exist as a non-exhaustive list of Synology models and their mappin
 | DS110j, DS210j, DS410j    | Marvell Kirkwood 88F6281 | 88f6281                | arm                    |
 ---
 ### Routers
-| Model    | CPU               | Synology Platform Name | Tailscale Package Arch |
+| Model    | CPU               | Synology Platform Name | Mirage Package Arch |
 | -------- | ----------------- | ---------------------- | ---------------------- |
 | MR2200ac | Qualcomm IPQ4019  | dakota                 | arm                    |
 | RT2600ac | Qualcomm IPQ8065  | ipq806x                | arm                    |
 | RT1900ac | Broadcom BCM58622 | northstarplus          | arm                    |
 ---
 ### Network Video Recorders
-| Model   | CPU              | Synology Platform Name | Tailscale Package Arch |
+| Model   | CPU              | Synology Platform Name | Mirage Package Arch |
 | ------- | ---------------- | ---------------------- | ---------------------- |
 | DVA3221 | Intel Atom C3538 | denverton              | amd64                  |
 | DVA3219 | Intel Atom C3538 | denverton              | amd64                  |
@@ -169,7 +169,7 @@ This document exist as a non-exhaustive list of Synology models and their mappin
 | NVR216  | HiSilicon Hi3535 | hi3535                 | arm                    |
 ---
 ### Video Stations
-| Model   | CPU              | Synology Platform Name | Tailscale Package Arch |
+| Model   | CPU              | Synology Platform Name | Mirage Package Arch |
 | ------- | ---------------- | ---------------------- | ---------------------- |
 | VS960HD | HiSilicon Hi3536 | hi3536                 |                        |
 | VS360HD | HiSilicon Hi3535 | hi3535                 | arm                    |

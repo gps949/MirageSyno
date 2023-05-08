@@ -1,4 +1,4 @@
-/var/packages/Tailscale/etc/tailscaled.stdout.log {
+/var/packages/Mirage/etc/miraged.stdout.log {
   size 10M
   rotate 3
   missingok

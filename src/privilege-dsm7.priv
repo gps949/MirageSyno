@@ -2,10 +2,10 @@
   "defaults":{
     "run-as": "package"
   },
-  "username": "tailscale",
-  "groupname": "tailscale",
+  "username": "mirage",
+  "groupname": "mirage",
   "tool": [{
-    "relpath": "bin/tailscaled",
+    "relpath": "bin/miraged",
     "user": "package",
     "group": "package",
     "capabilities": "cap_net_admin,cap_chown,cap_net_raw"
