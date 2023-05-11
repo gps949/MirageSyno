@@ -1,58 +1,17 @@
-# Tailscale package for Synology NAS
-![CI](https://github.com/tailscale/tailscale-synology/workflows/CI/badge.svg)
+<img src="https://user-images.githubusercontent.com/7601383/236672428-474d2e1f-5d56-4588-991d-1725d79739c4.png" width="30%" height="30%"></img>
+# 蜃境 群晖客户端 MirageSyno   
 
-Synology NAS package for Tailscale based on precompiled static binaries.
+蜃境客户端 群晖版本 构建工具     
+    
+## 完成功能进度    
+- [x] 添加登录时服务器设置【核心仓完成】   
+- [x] 添加子网转发设置【核心仓完成】   
+- [ ] DNS设置和子网转发开关   
+- [ ] 使用出口节点设置   
+     
 
-## Disclaimer
+## 截图   
 
-You use everything here at your own risk. Make sure you have other network
-paths to your NAS before installing this, in case something goes wrong.
+<img src="https://github.com/gps949/MirageSyno/assets/7601383/44c5626a-13c0-49c9-b3a1-6a5b3334c47a" width="50%" height="50%">
+<img src="https://github.com/gps949/MirageSyno/assets/7601383/ee29cad0-27c3-4f5c-a68f-1bc4704b90e1" width="50%" height="50%">
 
-## Issue Tracker
-
-File issues at: https://github.com/tailscale/tailscale/issues
-
-This repo's issue tracker is disabled. (And all historical issues have been moved so the old URLs redirect)
-
-## Installation
-
-1.  Download precompiled [releases](https://pkgs.tailscale.com) from the page for SPKs for your platform.
-2.  In the Synology DSM web admin UI, open the Package Center.
-3.  Press the *Manual install* button and provide the SPK file.
-4.  Follow the wizard until done.
-5.  At this point `tailscaled` should be up and running.
-6.  SSH into the  machine, and run `sudo tailscale up` so you can authenticate.
-
-## Upgrading
-
-If upgrading to version v1.10.0, you may end up with duplicate installations of Tailscale. This is a [known](https://github.com/tailscale/tailscale/issues/2266#issuecomment-869792505) side effect of some metadata changes that were made in v1.10.0 in preparation of the installation package to be listed in the Synology Package Center. It is recommended to uninstall the old Tailscale package first before upgrading to v1.10.0. Please note that your devices Tailscale IP may change when v1.10.0 is installed.
-
-## Compatibility
-
-The current package is confirmed to be working in different Synology models and architectures.
-
-The package is created based on Tailscale [static binaries](https://pkgs.tailscale.com/stable/#static), and if your NAS has any of the supported architectures (x86, x86_64, arm, arm64) it should _just_ work.
-
-If in doubt, check the [synology model list](docs/platforms.md) for the matching architecture.
-
-## Making packages
-
-This project hosts the machinery to build Tailscale Synology packages.
-
-You can build the packages using `make spkall` from the github.com/tailscale/tailscale repo
-```bash
-git clone https://github.com/tailscale/tailscale.git
-cd tailscale
-make spkall
-```
-If everything worked you should have a directory called `spks` that contains your SPK files.
-
-
-## Credits and References
-
-- Thanks to [@nirev](https://github.com/nirev) for creating this project and transferring it to Tailscale's GitHub org.
-- https://haugene.github.io/docker-transmission-openvpn/synology-nas/ for the /dev/net/tun thing
-- Package structure: [Synology Package Developer Guide](https://help.synology.com/developer-guide/index.html)
-- Official Package building tool: [pkgscripts-ng](https://github.com/SynologyOpenSource/pkgscripts-ng)
-- The package building process was originally based on [synology-wireguard](https://github.com/runfalk/synology-wireguard) \
-If you need to _**compile**_ a synology package, check it out.
