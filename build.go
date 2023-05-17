@@ -126,7 +126,7 @@ func main() {
 			}
 		}
 	}
-	log.Printf("VERSION_LONG=" + dv.Long)
+	fmt.Println("VERSION_LONG=" + dv.Long)
 }
 
 type spkParams struct {
