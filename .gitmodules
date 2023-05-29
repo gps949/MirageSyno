@@ -1,4 +1,4 @@
 [submodule "MirageClient"]
 	path = MirageClient
-	url = https://github.com/MirageNetwork/MirageClient.git
+	url = https://github.com/gps949/MirageClient.git
 	branch = main
