@@ -12,6 +12,6 @@
 
 ## 截图   
 
-<img src="https://github.com/gps949/MirageSyno/assets/7601383/44c5626a-13c0-49c9-b3a1-6a5b3334c47a" width="50%" height="50%">
-<img src="https://github.com/gps949/MirageSyno/assets/7601383/ee29cad0-27c3-4f5c-a68f-1bc4704b90e1" width="50%" height="50%">
+<img src="https://github.com/gps949/MirageSyno/assets/7601383/de946d87-4d3a-4e31-ad5d-cc20b2a9d307" width="50%" height="50%">
+<img src="https://github.com/gps949/MirageSyno/assets/7601383/4e870d07-f763-4d4a-9854-74a307b2b82b" width="50%" height="50%">
 
